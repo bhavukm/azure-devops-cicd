@@ -88,21 +88,26 @@ The goal is to simulate a real-world DevOps workflow aligned with enterprise pra
 ## Dockerfile
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+
 WORKDIR /app
 
 COPY . .
+
 RUN dotnet restore
+
 RUN dotnet publish -c Release -o out
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
+
 WORKDIR /app
 
 COPY --from=build /app/out .
+
 ENTRYPOINT ["dotnet", "SampleApp.dll"]
 
-Security Scanning (Trivy)
+**Security Scanning (Trivy)**
 
-Example step used in pipeline:
+**Example step used in pipeline:**
 
 trivy image --exit-code 1 --severity CRITICAL,HIGH myimage:tag
 
@@ -110,48 +115,70 @@ trivy image --exit-code 1 --severity CRITICAL,HIGH myimage:tag
 
 Ensures only secure images are deployed
 
-Branching Strategy
+**Branching Strategy**
 Feature branches → development work
+
 Pull Requests → code review + validation
+
 Main branch → production-ready code
 
 CI runs on PR
+
 CD runs on main
 
 Azure Resources Used
+
 Azure Container Registry (ACR)
+
 Azure Web App (Linux Container)
+
 Azure DevOps Service Connections:
+
 ACR connection
+
 Azure subscription connection
 
 **Local Development**
 
 Restore
+
 dotnet restore
 
 Build
+
 dotnet build
 
 Test
+
 dotnet test
 
 Key DevOps Practices Implemented
+
 CI/CD automation
+
 Shift-left testing (PR validation)
+
 Containerization for consistency
+
 Security scanning in pipeline
+
 Infrastructure decoupled from app
+
 Reproducible builds
 
-Future Improvements
+**Future Improvements**
+
 Infrastructure as Code using Terraform
+
 Multi-environment deployments (Dev → QA → Prod)
+
 Approval gates before production
+
 Integration with monitoring tools (Azure Monitor / Prometheus)
+
 Add SAST (e.g., SonarQube)
 
-Conclusion
+**Conclusion**
 
 This project demonstrates a complete CI/CD pipeline with real-world DevOps practices including code validation, security scanning, containerization, and automated deployment using Azure DevOps and Azure services.
 
