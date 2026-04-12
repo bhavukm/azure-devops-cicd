@@ -140,43 +140,43 @@ Azure subscription connection
 
 **Local Development**
 
-Restore
+**Restore**
 
 dotnet restore
 
-Build
+**Build**
 
 dotnet build
 
-Test
+**Test**
 
 dotnet test
 
-Key DevOps Practices Implemented
+**Key DevOps Practices Implemented**
 
-CI/CD automation
+* CI/CD automation
 
-Shift-left testing (PR validation)
+* Shift-left testing (PR validation)
 
-Containerization for consistency
+* Containerization for consistency
 
-Security scanning in pipeline
+* Security scanning in pipeline
 
-Infrastructure decoupled from app
+* Infrastructure decoupled from app
 
-Reproducible builds
+* Reproducible builds
 
 **Future Improvements**
 
-Infrastructure as Code using Terraform
+- Infrastructure as Code using Terraform
 
-Multi-environment deployments (Dev → QA → Prod)
+- Multi-environment deployments (Dev → QA → Prod)
 
-Approval gates before production
+- Approval gates before production
 
-Integration with monitoring tools (Azure Monitor / Prometheus)
+- Integration with monitoring tools (Azure Monitor / Prometheus)
 
-Add SAST (e.g., SonarQube)
+- Add SAST (e.g., SonarQube)
 
 **Conclusion**
 
